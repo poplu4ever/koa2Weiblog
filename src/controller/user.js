@@ -45,6 +45,7 @@
         console.log(ex.message,ex.stack);
         return new ErrorModel(ErrorMessage.registerFailInfo);
     }
+
  } 
     
  module.exports = {

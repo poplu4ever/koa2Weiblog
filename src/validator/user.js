@@ -50,7 +50,7 @@
  /**
   * @param {Object} data userinfo
   */
- function userValidate(data = {}){
+function userValidate(data = {}){
     return validate(SCHEMA,data);   
  }
 

@@ -12,7 +12,7 @@ const ErrorMessage = require('../model/ErrorInfo')
         const error = validateFn(data);
         if(error){
               ctx.body = new ErrorModel(ErrorMessage.jsonSchemaFailInfo);
-              return
+              return 
         }
         await next();
      }
