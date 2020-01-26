@@ -16,5 +16,9 @@
      registerUserNameNotExist:{
          errorno:10003,
          message:'用户名不存在'
-     }
+     },
+     jsonSchemaFailInfo:{
+        errorno:10004,
+        message:'json验证不通过'
+    }
  };
