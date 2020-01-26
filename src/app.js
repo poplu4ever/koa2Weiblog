@@ -10,6 +10,7 @@ const redisStore = require("koa-redis");
 
 const {REDIS_CONF} = require('./conf/db');
 const {isProd} = require('./utils/env');
+const secretKeys = require('./conf/secrectKey');
 
 
 //router
@@ -49,7 +50,7 @@ app.use(async (ctx, next) => {
 
 
 
-app.keys=['aSShu%%12'];
+app.keys=[secretKeys.SESSION_SECRECT_KEY];
 
 //connect session
 app.use(session({

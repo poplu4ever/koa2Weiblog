@@ -5,8 +5,16 @@
 
 
  module.exports = {
+    registerUserNameExist:{
+        errorno:10001,
+        message:'用户名已存在'
+    },
+    registerFailInfo:{
+        errorno:10002,
+        message:'注册失败，请重试'
+    },
      registerUserNameNotExist:{
-         error:10003,
+         errorno:10003,
          message:'用户名不存在'
      }
  };

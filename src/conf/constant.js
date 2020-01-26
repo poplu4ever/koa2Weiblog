@@ -1,5 +1,5 @@
 /**
- * @description
+ * @description constant variable
  * @author neolu
  */
 
