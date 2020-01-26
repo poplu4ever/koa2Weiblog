@@ -1,7 +1,11 @@
-
+/**
+ * @description Sync with database
+ * @author neolu
+ */
 
 const seq = require('./seq');
 
+require('./model/index');
 
 seq.authenticate().then(()=>{
     console.log('auth ok')
@@ -9,9 +13,7 @@ seq.authenticate().then(()=>{
     console.log('auth err')
 });
 
-
-
-seq.sync().then(()=>{
+seq.sync({force:true}).then(()=>{
     console.log('sync ok');
     process.exit();
 });

@@ -1,5 +1,5 @@
 /**
- *@description connect sequelize to mysql
+ *@description connect to mysql
  * @author neolu
  */
 
@@ -15,10 +15,12 @@ const conf = {
     dialect:'mysql'
 };
 
+//check if it is a test environment
 if(isTest){
     conf.logging = () => {}
 }
 
+//check if it is production environment
 if(isProd){
     conf.pool ={
         max:5,
@@ -27,6 +29,7 @@ if(isProd){
     }
 }
 
+//Initialse seq connection 
 const seq = new Sequelize(database,user,password,conf);
 
 module.exports = seq;
