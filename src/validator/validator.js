@@ -8,8 +8,8 @@ const ajv = new Ajv();
 
 /**
  * 
- * @param {Object} schema 
- * @param {Object} data 
+ * @param {Object} schema //rules
+ * @param {Object} data  //data to be verified
  */
 function validate(schema, data = {}){
     const valid = ajv.validate(schema,data);

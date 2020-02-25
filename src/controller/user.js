@@ -47,8 +47,25 @@
     }
 
  } 
+
+ /**
+  * @param {string} userName
+  * @param {string} passowrd
+  */
+ async function login(ctx,userName,passowrd){
+    const userInfo = await getUserInfo(userName,doCrypto(passowrd));
+    if(!userInfo){
+        return new ErrorModel(ErrorMessage.loginFailInfo);
+    }
+    if(ctx.session.userInfo == null){
+        ctx.session.userInfo = userInfo;
+    }
+    return new SuccessModel(userInfo);
+ }
+
     
  module.exports = {
      isExist,
-     register
+     register,
+     login
  };

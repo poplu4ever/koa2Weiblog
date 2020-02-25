@@ -16,5 +16,9 @@
      registerUserNameNotExist:{
          errorno:10003,
          message:'用户名不存在'
-     }
+     },
+     loginFailInfo:{
+        errorno:10004,
+        message:'登陆失败'
+    }
  };

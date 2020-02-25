@@ -48,10 +48,7 @@ app.use(async (ctx, next) => {
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 });
 
-
-
-app.keys=[secretKeys.SESSION_SECRECT_KEY];
-
+app.keys = [secretKeys.SESSION_SECRET_KEY];
 //connect session
 app.use(session({
   key:"weibo.sid", //cookie name
@@ -67,8 +64,7 @@ app.use(session({
 }));
 
 
-
-// routes
+// register routes
 app.use(index.routes(), index.allowedMethods());
 app.use(userViewRouter.routes(), userViewRouter.allowedMethods());
 app.use(userAPIRouter.routes(),userAPIRouter.allowedMethods());
