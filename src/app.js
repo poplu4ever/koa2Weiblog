@@ -36,6 +36,7 @@ app.use(json());
 app.use(logger());
 app.use(require('koa-static')(__dirname + '/public'));
 
+//using ejs template
 app.use(views(__dirname + '/views', {
   extension: 'ejs'
 }));

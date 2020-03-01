@@ -3,7 +3,6 @@
  * @author neolu
  */
 
-
  const validate = require('./validator');
 
  //verfictaion rules
