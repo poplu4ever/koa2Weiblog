@@ -57,9 +57,13 @@
     if(!userInfo){
         return new ErrorModel(ErrorMessage.loginFailInfo);
     }
+    //login success 
+    console.log("userbefore",ctx.session.userinfo);
     if(ctx.session.userInfo == null){
         ctx.session.userInfo = userInfo;
     }
+    console.log("userafter",ctx.session.userInfo);
+
     return new SuccessModel(userInfo);
  }
 

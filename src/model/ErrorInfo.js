@@ -19,6 +19,10 @@
      },
      loginFailInfo:{
         errorno:10004,
-        message:'登陆失败'
+        message:'登陆失败，用户名或密码错误'
+    },
+    loginCheckFailInfo:{
+        errorno:10004,
+        message:'尚未登陆'
     }
  };
