@@ -24,5 +24,9 @@
     loginCheckFailInfo:{
         errorno:10004,
         message:'尚未登陆'
+    },
+    deleteUserFailInfo:{
+        errorno:10011,
+        message:"删除用户失败"
     }
  };

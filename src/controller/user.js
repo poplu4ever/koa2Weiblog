@@ -3,7 +3,7 @@
  * @author neolu
  */
 
- const {getUserInfo,createUser} = require('../service/user');
+ const {getUserInfo,createUser,deleteUser} = require('../service/user');
  const {SuccessModel, ErrorModel} = require('../model/ResModel');
  const ErrorMessage = require('../model/ErrorInfo');
  const doCrypto = require('../utils/cryp');
@@ -67,9 +67,22 @@
     return new SuccessModel(userInfo);
  }
 
+
+ /**
+  * @param {string} userName
+  */
+async function deleteCurrentUser(userName){
+    const result = await deleteUser(userName);
+    if(result){
+        return new SuccessModel();
+    }
+
+    return new ErrorModel(ErrorMessage.deleteUserFailInfo);
+}
     
  module.exports = {
      isExist,
      register,
-     login
+     login,
+     deleteCurrentUser
  };
