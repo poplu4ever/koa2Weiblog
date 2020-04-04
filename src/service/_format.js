@@ -2,11 +2,11 @@
  * @description format data
  * @author neolu
  */
-
+const { DEFAULT_PICTURE } = require('../conf/constant');
 
  function _formatUserPicture(obj){
     if(obj.profileImg == null){
-        obj.profileImg = 'aaa';
+        obj.profileImg = DEFAULT_PICTURE;
     }
     return obj;
  }
