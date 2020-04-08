@@ -25,6 +25,18 @@
         errorno:10004,
         message:'尚未登陆'
     },
+    changePasswordFialInfo:{
+        errorno:10006,
+        message:'修改密码失败'
+    },
+    uploadFileSizeFailInfo:{
+        errorno:10007,
+        message:'上传文件尺寸过大'
+    },
+    changeInfoFailInfo:{
+        errorno:10008,
+        message:'修改用户信息失败'
+    },
     deleteUserFailInfo:{
         errorno:10011,
         message:"删除用户失败"

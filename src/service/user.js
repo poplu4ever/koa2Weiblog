@@ -25,6 +25,8 @@
         where:whereOpt
     })
 
+    // console.log('check userreturn',result);
+
     //user does not exist
     if(result == null){
         return result;
@@ -67,8 +69,51 @@ async function createUser({userName,password,gender = 3,nickName}){
     return result > 0;
  }
 
+
+/**
+ * update user
+ * @param {Object} param0
+ * @param {Object} param1
+ */
+async function updateUser(
+    {newPassword,newNickName,newPicture,newCity},
+    {username,password}
+){
+    //generate update content
+    const updateData = {};
+    if(newPassword){
+        updateData.password = newPassword;
+    }
+    if(newNickName){
+        updateData.nickName = newNickName;
+    }
+    if(newPicture){
+        updateData.profileImg = newPicture;
+    }
+    if(newCity){
+        updateData.city = newCity;
+    }
+
+    //generate search query
+    const whereData = {
+        username
+    };
+
+    if(password){
+        whereData.password = password;
+    }
+
+    //execute update
+    const result = await User.update(updateData,{
+        where:whereData
+    });
+
+    return result[0] > 0; //if result[0] > 0 means change successfully,returns true.
+}
+
  module.exports = {
      getUserInfo,
      createUser,
-     deleteUser
+     deleteUser,
+     updateUser
  };

@@ -41,7 +41,7 @@
     }
     // 上传文件
     window.ajax.upload = function (url, file, callback) {
-        var formData = new FormData()
+        var formData = new FormData();
         formData.append('file', file)
         $.ajax({
             type: 'POST',
@@ -50,7 +50,7 @@
             processData: false,
             data: formData,
             success: function(res) {
-                if (res.errno !== 0) {
+                if (res.errorno !== 0) {
                     // 错误
                     callback(res.message)
                     return

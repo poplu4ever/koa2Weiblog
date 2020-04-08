@@ -3,7 +3,7 @@
  * @author neolu
  */
 
- const {getUserInfo,createUser,deleteUser} = require('../service/user');
+ const {getUserInfo,createUser,deleteUser,updateUser} = require('../service/user');
  const {SuccessModel, ErrorModel} = require('../model/ResModel');
  const ErrorMessage = require('../model/ErrorInfo');
  const doCrypto = require('../utils/cryp');
@@ -79,10 +79,77 @@ async function deleteCurrentUser(userName){
 
     return new ErrorModel(ErrorMessage.deleteUserFailInfo);
 }
+
+
+/**
+ * @param {Object} ctx
+ * @param {string} nickname
+ * @param {string} city
+ * @param {string} profileImg
+ */
+async function changeInfo(ctx,{nickname,city,profileImg}){
+    const { username } = ctx.session.userInfo;
+    if(!nickname){
+        nickname = username;
+    }
+
+    const result = await updateUser(
+        {
+            newNickName : nickname,
+            newCity : city,
+            newPicture : profileImg
+        },
+        { username }
+    );
+
+    if(result){
+        Object.assign(ctx.session.userInfo,{
+            nickname,
+            city,
+            profileImg
+        })
+        return new SuccessModel();
+    }
+
+    return new ErrorModel(ErrorMessage.changeInfoFailInfo);
+}
+
+/**
+ * @param {Object} ctx
+ * @param {string} password
+ * @param {string} newPassword
+ */
+async function changePassword(ctx,{password,newPassword}){
+    const username = ctx.session.userInfo;
+    const result = await updateUser(
+    { newPassword:doCrypto(newPassword)},
+    { 
+        username,
+        password:doCrypto(password)
+    })
+
+    if(result){
+        return new SuccessModel();
+    }
+
+    return new ErrorModel(ErrorMessage.changePasswordFialInfo);
+}
+
+/**
+ * @param {Object} ctx
+ */
+async function logout(ctx){
+    delete ctx.session.userInfo;
+    return new SuccessModel();
+}
+
     
  module.exports = {
      isExist,
      register,
      login,
-     deleteCurrentUser
+     deleteCurrentUser,
+     changeInfo,
+     changePassword,
+     logout
  };
