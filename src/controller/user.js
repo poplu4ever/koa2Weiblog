@@ -92,7 +92,7 @@ async function changeInfo(ctx,{nickname,city,profileImg}){
     if(!nickname){
         nickname = username;
     }
-
+    //pass in info that needed to be updated
     const result = await updateUser(
         {
             newNickName : nickname,
@@ -142,8 +142,7 @@ async function logout(ctx){
     delete ctx.session.userInfo;
     return new SuccessModel();
 }
-
-    
+ 
  module.exports = {
      isExist,
      register,

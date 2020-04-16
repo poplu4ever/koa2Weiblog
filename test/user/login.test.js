@@ -4,7 +4,7 @@
  */
 
 
- const server = require('../server');
+const server = require('../server');
 
  //userinfo
 const userName = `u_${Date.now()}`;
@@ -67,7 +67,35 @@ test('check login', async () => {
 
     //get cookie
     COOKIE = res.headers['set-cookie'].join(';');
+    
 }) 
+
+//Update Personal Info
+test("update personal info", async () => {
+    const res = await server
+        .patch('api/user/changeInfo')
+        .send({
+            nickName:"TEST NICKNAME",
+            city: "TEST CITY",
+            profileImg: "/TEST.png"
+        })
+        .set('cookie',COOKIE)
+    expect(res.body.errorno).toBe(0)
+})
+
+//Update Password
+test('update password', async () => {
+    const res = await server
+        .patch('/api/user/changePassword')
+        .send({
+            password,
+            newPassword: `p_${Date.now()}`
+        })
+        .set('cookie',COOKIE)
+
+    expect(res.body.errorno).toBe(0)
+})
+
 
 //delete
 test('delete user', async () => {
@@ -76,6 +104,14 @@ test('delete user', async () => {
         .set('cookie',COOKIE)
     expect(res.body.errorno).toBe(0);
 }) 
+
+//Logout 
+test('Logout', async ()=>{
+    const res = await server
+        .post('/api/user/logout')
+        .set('cookie',COOKIE)
+    expect(res.body.errorno).toBe(0)
+})
 
 
 //check delete user
