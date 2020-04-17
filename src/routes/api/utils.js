@@ -14,8 +14,11 @@
  //upload image
 router.post('/upload',loginCheck,koaform(),async(ctx,next)=>{
     
-    console.log("CHECK FILE", ctx.req.files);
+    // console.log("CHECK FILE", ctx.req.files);
     const file = ctx.req.files['file'];
+    if(!file){
+        return;
+    }
     const {size,path,name,type} = file;
     ctx.body = await saveFile({
         name,

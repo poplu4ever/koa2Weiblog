@@ -15,7 +15,7 @@ const {isProd} = require('./utils/env');
 const secretKeys = require('./conf/secrectKey');
 
 //router
-const index = require('./routes');
+const blogViewRouter = require('./routes/view/blog');
 const userViewRouter = require('./routes/view/user');
 const userAPIRouter = require('./routes/api/user');
 const errorViewRouter = require('./routes/view/error');
@@ -69,7 +69,7 @@ app.use(session({
 
 
 // register routes
-app.use(index.routes(), index.allowedMethods());
+app.use(blogViewRouter.routes(), blogViewRouter.allowedMethods());
 app.use(userViewRouter.routes(), userViewRouter.allowedMethods());
 app.use(utilAPIRouter.routes(),utilAPIRouter.allowedMethods());
 app.use(userAPIRouter.routes(),userAPIRouter.allowedMethods());
