@@ -12,7 +12,7 @@
  router.prefix('/api/utils');
 
  //upload image
-router.post('/upload',loginCheck,koaform(),async(ctx,next)=>{
+router.post('/upload',loginCheck, koaform(), async(ctx,next)=>{
     
     // console.log("CHECK FILE", ctx.req.files);
     const file = ctx.req.files['file'];
@@ -27,5 +27,4 @@ router.post('/upload',loginCheck,koaform(),async(ctx,next)=>{
         filePath:path});
 });
 
-  
  module.exports = router;

@@ -40,5 +40,9 @@
     deleteUserFailInfo:{
         errorno:10011,
         message:"删除用户失败"
+    },
+    createBlogFailInfo:{
+        errorno:11001,
+        message:"创建微博失败，请重试"
     }
  };

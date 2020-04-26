@@ -20,6 +20,7 @@ const userViewRouter = require('./routes/view/user');
 const userAPIRouter = require('./routes/api/user');
 const errorViewRouter = require('./routes/view/error');
 const utilAPIRouter = require('./routes/api/utils');
+const blogHomeAPIRouter = require('./routes/api/blog-home')
 
 // error handler
 let onerrorConf = {};
@@ -69,6 +70,7 @@ app.use(session({
 
 
 // register routes
+app.use(blogHomeAPIRouter.routes(), blogHomeAPIRouter.allowedMethods());
 app.use(blogViewRouter.routes(), blogViewRouter.allowedMethods());
 app.use(userViewRouter.routes(), userViewRouter.allowedMethods());
 app.use(utilAPIRouter.routes(),utilAPIRouter.allowedMethods());

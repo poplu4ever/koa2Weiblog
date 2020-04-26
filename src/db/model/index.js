@@ -3,11 +3,11 @@
  * @neolu
  */
 
- const {User} = require('./User');
- const {Blog} = require('./Blog');
+ const User = require('./User');
+ const Blog = require('./Blog');
 
- Blog.belongsTo( User, {
-     foreignKey:"userId"
+ Blog.belongsTo(User, {
+   foreignKey:"userId"
  });
 
  module.exports = {

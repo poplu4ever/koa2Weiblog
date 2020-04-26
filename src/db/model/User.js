@@ -6,7 +6,7 @@
  const seq = require('../seq');
  const {STRING,DECIMAL} = require('../types.js');
 
- const User = seq.define('user',{
+ const User = seq.define('user', {
      userName:{
         type:STRING,
         allowNull: false,
